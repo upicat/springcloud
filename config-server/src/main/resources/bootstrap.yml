@@ -1,3 +1,5 @@
 spring:
   application:
-    name: config-server
+    name: configserver
+  config:
+    name: configserver

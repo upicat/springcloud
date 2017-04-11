@@ -40,10 +40,19 @@
 		</dependency>
 		-->
 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
+	<!-- To run your own server use the spring-cloud-config-server dependency 
+		and @EnableConfigServer. If you set spring.config.name=configserver the app 
+		will run on port 8888 and serve data from a sample repository. You need a 
+		spring.cloud.config.server.git.uri to locate the configuration data for your 
+		own needs (by default it is the location of a git repository, and can be 
+		a local file:.. URL). 
+		-->
+		<!-- 
+		<dependency> 
+			<groupId>org.springframework.cloud</groupId> 
+			<artifactId>spring-cloud-starter-config</artifactId> 
+		</dependency> 
+		-->
 		<!--表示为web工程 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

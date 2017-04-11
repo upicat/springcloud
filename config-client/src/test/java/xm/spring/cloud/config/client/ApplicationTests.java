@@ -1,4 +1,4 @@
-package xm.spring.cloud.config.server;
+package xm.spring.cloud.config.client;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,10 +18,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ConfigServerApplication.class)
+@SpringApplicationConfiguration(classes = ConfigClientApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
-public class ConfigServerApplicationTests {
+public class ApplicationTests {
 
 	@Value("${local.server.port}")
 	private int port = 0;
@@ -30,7 +30,7 @@ public class ConfigServerApplicationTests {
 	public void configurationAvailable() {
 		@SuppressWarnings("rawtypes")
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(
-				"http://localhost:" + port + "/foo/dev", Map.class);
+				"http://localhost:" + port + "/app/cloud", Map.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 

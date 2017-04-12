@@ -1,8 +1,6 @@
 package xm.spring.cloud.eureka.client;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 import java.util.Map;
 
@@ -20,21 +18,14 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = EurekaApplication.class)
+@SpringApplicationConfiguration(classes = EurekaClientApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
-public class ConfigClientApplicationTests {
+public class EurekaClientApplicationTests {
 
 	@Value("${local.server.port}")
 	private int port = 0;
 	
-	@Test
-	public void configurationAvailable() throws Exception {
-		String body = new TestRestTemplate().getForEntity(
-				"http://localhost:" + port + "/", String.class).getBody();
-		assertThat(body, containsString("Hello"));
-	}
-
 	@Test
 	public void envPostAvailable() {
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();

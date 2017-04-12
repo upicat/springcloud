@@ -8,12 +8,12 @@ logging:
   level:
     com.netflix.discovery: 'OFF'
     org.springframework.cloud: 'DEBUG'
-    
+
 spring:
-  cloud:
+   cloud:
     config:
       server:
         git:
           uri: https://github.com/upicat/springcloud
           searchPaths: config-repo
-          basedir: target/config
+#          basedir: target/config

@@ -1,6 +1,8 @@
 package xm.spring.cloud.config.client;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.util.Map;
 
@@ -21,17 +23,16 @@ import org.springframework.util.MultiValueMap;
 @SpringApplicationConfiguration(classes = ConfigClientApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
-public class ApplicationTests {
+public class ConfigClientApplicationTests {
 
 	@Value("${local.server.port}")
 	private int port = 0;
-
+	
 	@Test
-	public void configurationAvailable() {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(
-				"http://localhost:" + port + "/app/cloud", Map.class);
-		assertEquals(HttpStatus.OK, entity.getStatusCode());
+	public void configurationAvailable() throws Exception {
+		String body = new TestRestTemplate().getForEntity(
+				"http://localhost:" + port + "/", String.class).getBody();
+		assertThat(body, containsString("Hello"));
 	}
 
 	@Test

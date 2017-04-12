@@ -1,3 +1,8 @@
 spring:
   application:
-    name: config-server
+    name: foo
+  cloud:
+    config:
+      uri: http://localhost:8888
+#      label: master
+#      env: default

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 @EnableAutoConfiguration
 @ComponentScan
 @RestController
-@RefreshScope
+@RefreshScope // POST http://localhost:${port}/refresh 
 public class ConfigClientApplication {
 
 	@Value("${name:World!}") String name ;

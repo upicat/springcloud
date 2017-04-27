@@ -1,8 +1,8 @@
 server:
   port: 8761
 
-management:
-  context-path: /admin
+#management:
+#  context-path: /admin
   
 logging:
   level:
@@ -10,10 +10,10 @@ logging:
     org.springframework.cloud: 'DEBUG'
     
 
-#eureka:
-#  client:
-#    registerWithEureka: false
-#    fetchRegistry: false
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
 #  server:
 #    waitTimeInMsWhenSyncEmpty: 0
 #  instance:

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eurekaserver1
+    name: eurekaserver
 #  cloud:
 #    config:
 #      uri: http://localhost:8888

@@ -1,5 +1,4 @@
-package xm.spring.cloud.eureka.server;
-
+package xm.spring.cloud.eureka.client;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -13,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext
-public class EurekaServerApplicationTests {
+public class ProviderApplicationTests {
 
 	@Autowired
 	private EurekaDiscoveryClient client;

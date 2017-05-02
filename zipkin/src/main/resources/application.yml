@@ -1,0 +1,10 @@
+server:
+  port: ${port:9411}
+
+#management:
+#  context-path: /admin
+  
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'

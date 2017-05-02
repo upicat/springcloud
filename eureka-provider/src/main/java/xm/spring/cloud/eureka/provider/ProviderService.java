@@ -1,4 +1,4 @@
-package xm.spring.cloud.eureka.client;
+package xm.spring.cloud.eureka.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

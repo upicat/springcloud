@@ -21,6 +21,8 @@
 		<module>eureka-consumer</module>
 		<module>eureka-provider</module>
 		<module>turbine-hystrix-dashboard</module>
+		<module>zuul</module>
+		<module>zipkin</module>
 	</modules>
 
 	<properties>

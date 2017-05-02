@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ${name:consumer}
+  zipkin:
+    base-url: http://localhost:9411
     
 #management:
 #  context-path: /admin
@@ -13,7 +15,6 @@ logging:
   level:
     com.netflix.discovery: 'OFF'
     org.springframework.cloud: 'DEBUG'
-
 
 eureka:
   password: password
@@ -33,3 +34,4 @@ endpoints:
     enabled: true
   health:
     sensitive: false
+    

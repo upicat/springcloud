@@ -2,18 +2,25 @@ package xm.spring.cloud.eureka.client;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.loadbalancer.Server;
+import com.netflix.loadbalancer.ServerList;
+import com.netflix.loadbalancer.ZoneAwareLoadBalancer;
 
 @Component
 @RestController
@@ -67,5 +74,27 @@ public class ConsumerService {
 //		@RequestMapping(value = "/", method = GET)
 		@RequestMapping(value = "/hello", method = GET)
 		String hello();
+	}
+	
+	@Autowired
+	private SpringClientFactory clientFactory;
+
+	@RequestMapping("/ribbon")
+	public String getServerList() throws Exception {
+		ZoneAwareLoadBalancer<Server> lb = (ZoneAwareLoadBalancer<Server>) clientFactory.getLoadBalancer("consumer");
+		ServerList<Server> serverList = lb.getServerListImpl();
+
+		List<Server> serverDetailList = serverList.getInitialListOfServers();
+		
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		if (!CollectionUtils.isEmpty(serverDetailList)) {
+			for (Server s : serverDetailList) {
+				pw.println(s.getHost() + "," + s.getPort()+"; ");
+			}
+		} else {
+			pw.println("no service");
+		}
+		return sw.toString();
 	}
 }

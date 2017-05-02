@@ -9,32 +9,29 @@
 	</parent>
 
 	<groupId>xm.spring.cloud</groupId>
-	<artifactId>eureka-provider</artifactId>
-	<name>eureka-provider</name>
+	<artifactId>zipkin</artifactId>
+	<name>zipkin</name>
 	<packaging>jar</packaging>
 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<docker.image.name>eureka-provider</docker.image.name>
+		<docker.image.name>zipkin</docker.image.name>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
         <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
         </dependency>
+
 	</dependencies>
 </project>

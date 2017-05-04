@@ -1,11 +1,13 @@
-package xm.spring.cloud.eureka.client;
-import static org.junit.Assert.assertNotNull;
+package xm.spring.cloud.zipkin;
+
+
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
+import org.springframework.cloud.sleuth.zipkin.ZipkinSpanListener;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -15,11 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ZipkinApplicationTests {
 
 	@Autowired
-	private EurekaDiscoveryClient client;
+	ZipkinSpanListener listener;
 
 	@Test
-	public void contextLoads() throws Exception {
-		assertNotNull(this.client);
+	public void contextLoads() {
 	}
 
+	@Test
+	public void listenerIsInjected() {
+		assertTrue("listener is wrong type", this.listener instanceof ZipkinSpanListener);
+	}
 }

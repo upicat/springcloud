@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 @EnableZuulProxy
-public class ZipkinApplication {
+public class ZuulApplication {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(ZipkinApplication.class, args);
+		SpringApplication.run(ZuulApplication.class, args);
 	}
 
 	@RequestMapping("/call")

@@ -9,14 +9,14 @@
 	</parent>
 
 	<groupId>xm.spring.cloud</groupId>
-	<artifactId>zipkin</artifactId>
-	<name>zipkin</name>
+	<artifactId>consul-test</artifactId>
+	<name>consul-test</name>
 	<packaging>jar</packaging>
 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<docker.image.name>zipkin</docker.image.name>
+		<docker.image.name>consul-test</docker.image.name>
 	</properties>
 
 	<dependencies>
@@ -24,17 +24,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		<dependency>
-            <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-server</artifactId>
-        </dependency>
+		<!-- <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency> -->
         <dependency>
-            <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-autoconfigure-ui</artifactId>
-        </dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zipkin</artifactId>
+			<artifactId>spring-cloud-starter-consul-all</artifactId>
 		</dependency>
 	</dependencies>
 </project>
